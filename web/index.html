@@ -63,7 +63,7 @@
   }
 
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%; overflow-x:clip}
   body{
     margin:0; background:var(--paper); color:var(--ink);
     font-family:var(--font-body); font-size:16px; line-height:1.6;
@@ -94,7 +94,7 @@
   .appbar .spring{flex:1}
   .tbtn{
     appearance:none; border:1px solid var(--hairline-2); background:var(--surface-2);
-    color:var(--ink-2); width:34px; height:34px; border-radius:9px; cursor:pointer;
+    color:var(--ink-2); width:44px; height:44px; border-radius:9px; cursor:pointer;
     font-size:15px; line-height:1; display:grid; place-items:center; transition:.15s;
   }
   .tbtn:hover{color:var(--ink); border-color:var(--ink-3)}
@@ -229,13 +229,13 @@
   .fgrid{display:grid; grid-template-columns:1.1fr 1fr; gap:36px 48px; align-items:start}
   .fh{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 14px}
   .repos{display:flex; flex-direction:column; gap:9px}
-  .repos a{display:inline-flex; align-items:baseline; gap:10px; text-decoration:none; font-size:14px; color:var(--ink-2); width:fit-content}
+  .repos a{display:grid; grid-template-columns:auto minmax(0,1fr); align-items:baseline; gap:10px; text-decoration:none; font-size:14px; color:var(--ink-2)}
   .repos a:hover{color:var(--ink)}
   .repos a .rk{font-family:var(--font-display); width:2.4em; letter-spacing:.04em}
   .repos a .rk.g{color:var(--gold)} .repos a .rk.o{color:var(--orange)}
   .repos a .rk.hub{width:auto; color:var(--ink-2); letter-spacing:.06em}
   .repos a .rk.rb{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .repos a .rp{font-family:var(--font-num); font-size:13px}
+  .repos a .rp{font-family:var(--font-num); font-size:13px; overflow-wrap:anywhere; min-width:0}
   .principle{font-size:13.5px; color:var(--ink-2); line-height:1.72; margin:0}
   .principle b{color:var(--ink); font-weight:700}
   .fnote{margin-top:34px; padding-top:20px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; font-size:12.5px; color:var(--ink-3)}
@@ -261,6 +261,9 @@
     .cstep .dest{grid-column:1/-1; justify-content:flex-start; padding-left:44px; text-align:left}
     .cstep .dest .lab{align-items:flex-start}
     .cstep .dest{flex-direction:row}
+  }
+  @media (max-width:360px){
+    .wrap{padding:0 14px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none !important; transition:none !important}
