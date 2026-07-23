@@ -6,6 +6,22 @@
 <meta name="robots" content="noindex, nofollow">
 <title>부동산 연구 3부작 — 循環 · 時差 · 收支</title>
 <meta name="description" content="세 개의 부동산 연구를 하나의 의사결정 시스템으로. 순환에서 구조를 보고, 시차에서 전달시간을 재고, 수지에서 손익으로 환산한다.">
+<link rel="canonical" href="https://sambujak.pages.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="부동산 연구 3부작">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://sambujak.pages.dev/">
+<meta property="og:title" content="부동산 연구 3부작 — 循環 · 時差 · 收支">
+<meta property="og:description" content="세 개의 부동산 연구를 하나의 의사결정 시스템으로. 순환에서 구조를 보고, 시차에서 전달시간을 재고, 수지에서 손익으로 환산한다.">
+<meta property="og:image" content="https://sambujak.pages.dev/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="부동산 연구 3부작 — 循環 · 時差 · 收支">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="부동산 연구 3부작 — 循環 · 時差 · 收支">
+<meta name="twitter:description" content="세 개의 부동산 연구를 하나의 의사결정 시스템으로. 순환에서 구조를 보고, 시차에서 전달시간을 재고, 수지에서 손익으로 환산한다.">
+<meta name="twitter:image" content="https://sambujak.pages.dev/og.png">
 <style>
   /* ============ 중립 종이 위, 세 색은 포인트로만 ============ */
   :root{
@@ -14,7 +30,8 @@
     --hairline:#e6e2d8; --hairline-2:#d8d3c6;
     --gold:#9c7818; --gold-2:#b8901f; --gold-wash:#f4ecd6;      /* 循環 금 */
     --orange:#c2410c; --orange-2:#e05910; --orange-wash:#fbe8dc; /* 收支 주황 */
-    --red:#cf1f2b; --blue:#1748c8; --rb-wash:#eeeefb;            /* 時差 적청 */
+    --red:#cf1f2b; --blue:#1748c8; --rb-wash:#eeeefb;            /* 視差 적청 */
+    --teal:#176b73;                                             /* 時差 청록(시간) */
     --shadow:0 1px 2px rgba(30,32,38,.04), 0 8px 28px -18px rgba(30,32,38,.22);
     --font-display:"Songti SC","Songti TC","AppleMyungjo","Nanum Myeongjo","Noto Serif KR",serif;
     --font-body:"Apple SD Gothic Neo","Pretendard","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -29,7 +46,7 @@
       --hairline:#2b2e35; --hairline-2:#3a3e47;
       --gold:#cba24a; --gold-2:#d9b45f; --gold-wash:#2a2311;
       --orange:#ef8432; --orange-2:#f5a068; --orange-wash:#33231a;
-      --red:#f0616a; --blue:#7b9dff; --rb-wash:#1a1e30;
+      --red:#f0616a; --blue:#7b9dff; --rb-wash:#1a1e30; --teal:#4fb3bb;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.6);
       color-scheme:dark;
     }
@@ -40,7 +57,7 @@
     --hairline:#2b2e35; --hairline-2:#3a3e47;
     --gold:#cba24a; --gold-2:#d9b45f; --gold-wash:#2a2311;
     --orange:#ef8432; --orange-2:#f5a068; --orange-wash:#33231a;
-    --red:#f0616a; --blue:#7b9dff; --rb-wash:#1a1e30;
+    --red:#f0616a; --blue:#7b9dff; --rb-wash:#1a1e30; --teal:#4fb3bb;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.6);
     color-scheme:dark;
   }
@@ -135,6 +152,14 @@
     margin-bottom:16px;
   }
   .card.rb .seal{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent; border-color:color-mix(in srgb,var(--blue) 22%, var(--hairline))}
+  /* 視差(공간·적청) 위, 時差(시간·청록) 아래 — 두 줄 스택 */
+  .card.rb .seal.parallax{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+    font-size:16.5px; line-height:1.15; letter-spacing:.04em;
+    background:var(--rb-wash); -webkit-background-clip:border-box; background-clip:border-box; color:var(--ink);
+  }
+  .seal.parallax .sp{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent}
+  .seal.parallax .tm{color:var(--teal); -webkit-text-fill-color:var(--teal)}
   .kicker{font-size:12.5px; font-weight:700; letter-spacing:.02em; color:var(--accent); margin:0 0 6px}
   .card.rb .kicker{color:var(--blue)}
   .q{font-family:var(--font-display); font-weight:600; font-size:21px; line-height:1.32; color:var(--ink); margin:0 0 12px}
@@ -204,6 +229,7 @@
   .repos a:hover{color:var(--ink)}
   .repos a .rk{font-family:var(--font-display); width:2.4em; letter-spacing:.04em}
   .repos a .rk.g{color:var(--gold)} .repos a .rk.o{color:var(--orange)}
+  .repos a .rk.hub{width:auto; color:var(--ink-2); letter-spacing:.06em}
   .repos a .rk.rb{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
   .repos a .rp{font-family:var(--font-num); font-size:13px}
   .principle{font-size:13.5px; color:var(--ink-2); line-height:1.72; margin:0}
@@ -211,6 +237,8 @@
   .fnote{margin-top:34px; padding-top:20px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; font-size:12.5px; color:var(--ink-3)}
   .fnote .dot{width:4px; height:4px; border-radius:50%; background:var(--hairline-2)}
   .fnote .tri b{font-family:var(--font-display); letter-spacing:.05em}
+  .fnote .build{font-family:var(--font-num); font-size:12px; letter-spacing:0}
+  .fnote .build .num{color:var(--ink-2); font-weight:600}
 
   /* ---------- 반응형: 모바일 1열 ---------- */
   @media (max-width:900px){
@@ -288,7 +316,7 @@
       </article>
 
       <article class="card rb">
-        <div class="seal hanja">時差</div>
+        <div class="seal hanja parallax" aria-label="視差·時差"><span class="sp">視差</span><span class="tm">時差</span></div>
         <p class="kicker">신호의 전달시간</p>
         <h3 class="q">그 변화는 언제 전달되는가</h3>
         <p class="desc">금리·거래·가격·공급 사이의 전달 시차를 교차상관·국면분리·지역확산으로 잰다. 같은 자산의 세 가격(실거래·전세·공시)을 겹쳐 각도를 본다.</p>
@@ -349,7 +377,7 @@
     <p class="lead" style="margin-top:8px; margin-bottom:26px">각 단계는 해당 연구의 정확한 장으로 바로 연결된다. 순서대로 열어 보면 하나의 관측이 손익 시나리오가 되는 과정을 따라갈 수 있다.</p>
     <div class="caseflow">
 
-      <a class="cstep gold" href="https://sunhwan.pages.dev#ch2" target="_blank" rel="noopener">
+      <a class="cstep gold" href="https://sunhwan.pages.dev/#/ch2" target="_blank" rel="noopener">
         <span class="n">1</span>
         <span class="body">
           <p class="h">부산 미분양 감소를 관측한다</p>
@@ -367,7 +395,7 @@
         <span class="dest"><span class="lab"><span class="site hanja">時差</span><span class="ch">Ⅴ 시차지도</span></span><span class="arr">↗</span></span>
       </a>
 
-      <a class="cstep orange" href="https://yoonjae.pages.dev#/ch3" target="_blank" rel="noopener">
+      <a class="cstep orange" href="https://yoonjae.pages.dev/#/ch3" target="_blank" rel="noopener">
         <span class="n">3</span>
         <span class="body">
           <p class="h">부산 개발 시나리오로 환산한다</p>
@@ -385,8 +413,9 @@
     <div class="wrap">
       <div class="fgrid">
         <div>
-          <p class="fh">GitHub · 세 저장소</p>
+          <p class="fh">GitHub · 네 저장소</p>
           <div class="repos">
+            <a href="https://github.com/yooooonjae/sambujak" target="_blank" rel="noopener"><span class="rk hub hanja">三部作</span><span class="rp">github.com/yooooonjae/sambujak</span></a>
             <a href="https://github.com/yooooonjae/sunhwan" target="_blank" rel="noopener"><span class="rk g hanja">循環</span><span class="rp">github.com/yooooonjae/sunhwan</span></a>
             <a href="https://github.com/yooooonjae/sicha" target="_blank" rel="noopener"><span class="rk rb hanja">時差</span><span class="rp">github.com/yooooonjae/sicha</span></a>
             <a href="https://github.com/yooooonjae/suji" target="_blank" rel="noopener"><span class="rk o hanja">收支</span><span class="rp">github.com/yooooonjae/suji</span></a>
@@ -402,7 +431,8 @@
         <span class="tri"><b class="hanja">時差</b> 신호의 전달시간</span><span class="dot"></span>
         <span class="tri"><b class="hanja">收支</b> 개별 사업의 손익</span><span class="dot"></span>
         <span>noindex · 포트폴리오 열람 목적</span><span class="dot"></span>
-        <span>© 2026 Yooooonjae</span>
+        <span>© 2026 Yooooonjae</span><span class="dot"></span>
+        <span class="build"><span class="num">e5b7b43</span> · Built</span>
       </div>
     </div>
   </footer>
