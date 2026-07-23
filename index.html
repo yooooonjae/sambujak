@@ -106,7 +106,9 @@
   }
 
   /* ---------- 히어로 ---------- */
-  .hero{padding-top:clamp(40px,6vw,72px); padding-bottom:clamp(40px,6vw,64px)}
+  .hero{padding-top:clamp(40px,6vw,72px); padding-bottom:clamp(40px,6vw,64px); position:relative}
+  .hero::before{content:""; position:absolute; inset:-40px -8vw auto auto; width:min(560px,46vw); height:420px; border-radius:50%;
+    background:radial-gradient(closest-side, var(--gold-wash), transparent 72%); opacity:.8; pointer-events:none; z-index:-1}
   .hero-grid{display:grid; grid-template-columns:1.35fr .65fr; gap:40px; align-items:center}
   .hero .trichip{display:flex; gap:14px; align-items:center; margin:0 0 20px; font-family:var(--font-display); font-size:18px; letter-spacing:.14em}
   .hero .trichip .g{color:var(--gold)} .hero .trichip .rb{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent} .hero .trichip .o{color:var(--orange)}
@@ -200,20 +202,22 @@
   .caseflow{display:flex; flex-direction:column; gap:10px; margin-top:8px}
   .cstep{
     display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px;
-    text-decoration:none; color:inherit; background:var(--surface);
+    text-decoration:none; color:inherit;
+    background:linear-gradient(115deg, var(--gold-wash) 0%, var(--surface) 44%);
     border:1px solid var(--hairline); border-left:3px solid var(--accent);
     border-radius:var(--radius); padding:18px 22px; box-shadow:var(--shadow);
     transition:transform .16s, border-color .16s, box-shadow .16s;
     --accent:var(--ink);
   }
-  .cstep.gold{--accent:var(--gold)} .cstep.rb{--accent:var(--blue)} .cstep.orange{--accent:var(--orange)}
+  .cstep.gold, .cstep.rb, .cstep.orange{--accent:var(--gold)}  /* 부산 경로 카드는 허브 금 단색 통일 */
   .cstep:hover{transform:translateX(3px); box-shadow:0 2px 4px rgba(30,32,38,.06),0 18px 36px -24px rgba(30,32,38,.42)}
   .cstep .n{font-family:var(--font-num); font-size:13px; font-weight:700; color:var(--accent); width:26px; height:26px; border-radius:50%; border:1px solid color-mix(in srgb,var(--accent) 34%, var(--hairline)); display:grid; place-items:center; background:var(--paper)}
   .cstep .body .h{font-weight:800; font-size:16px; color:var(--ink); margin:0 0 3px}
   .cstep .body .s{font-size:13px; color:var(--ink-2); margin:0}
   .cstep .dest{text-align:right; white-space:nowrap; display:flex; align-items:center; gap:12px}
   .cstep .dest .lab{display:flex; flex-direction:column; align-items:flex-end; gap:2px}
-  .cstep .dest .site{font-family:var(--font-display); font-size:15px; color:var(--accent); letter-spacing:.03em}
+  .cstep .dest .site{font-family:var(--font-display); font-size:15px; letter-spacing:.03em}
+  .cstep.gold .dest .site{color:var(--gold)} .cstep.orange .dest .site{color:var(--orange)}
   .cstep.rb .dest .site{background:linear-gradient(92deg,var(--red),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
   .cstep .dest .ch{font-size:11.5px; color:var(--ink-3); font-weight:600}
   .cstep .dest .arr{color:var(--ink-3); font-size:16px; transition:transform .16s}
