@@ -41,7 +41,7 @@ stamp:
 	echo "✓ 미러 동일 확인 (index.html == web/index.html)"
 
 mirror:
-	@cp index.html web/index.html && echo "✓ web/index.html ← index.html 동기화"
+	@cp index.html web/index.html && cp robots.txt web/robots.txt && cp og.png web/og.png && echo "✓ web/ ← index.html·robots.txt·og.png 동기화"
 
 check:
 	@node tests/check_links.js
