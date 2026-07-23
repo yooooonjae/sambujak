@@ -23,3 +23,17 @@ jobs:
 
       - name: 링크·자산·og.png 계약 검사
         run: node tests/check_links.js
+
+      - name: root ↔ web 미러 해시 동일성
+        run: |
+          fail=0
+          for f in index.html robots.txt og.png; do
+            a=$(sha256sum "$f" | cut -d' ' -f1)
+            b=$(sha256sum "web/$f" | cut -d' ' -f1)
+            if [ "$a" != "$b" ]; then
+              echo "✗ $f ≠ web/$f"; echo "    root=$a"; echo "    web =$b"; fail=1
+            else
+              echo "✓ $f == web/$f  ($a)"
+            fi
+          done
+          [ "$fail" = 0 ] || { echo "미러 불일치 — 배포 전 web/ 재동기화(make mirror) 필요"; exit 1; }
